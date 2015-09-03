@@ -1,6 +1,6 @@
 {
     "architecture": "@CLICK_ARCH@",
-    "description": "A simple Unity scope that accesses the network",
+    "description": "Launch your browser bookmarks from the Dash",
     "framework": "ubuntu-sdk-15.04",
     "hooks": {
         "bookmarks": {
@@ -10,6 +10,6 @@
     },
     "maintainer": "Robert Schroll <rschroll@gmail.com>",
     "name": "bookmarks.rschroll",
-    "title": "bookmarks",
+    "title": "Browser Bookmarks",
     "version": "0.1"
 }

@@ -1,10 +1,7 @@
 [ScopeConfig]
-_DisplayName=Bookmarks
+_DisplayName=Browser Bookmarks
 _Description=Launch your browser bookmarks from the Dash
 Art=screenshot.png
 Author=Robert Schroll
 Icon=icon.png
 Keywords=browser,bookmark,web
-
-[Appearance]
-

@@ -41,8 +41,6 @@ public:
     unity::scopes::SearchQueryBase::UPtr search(
             unity::scopes::CannedQuery const& q,
             unity::scopes::SearchMetadata const&) override;
-
-protected:
 };
 
 #endif // SCOPE_H_

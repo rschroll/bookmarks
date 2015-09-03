@@ -1,4 +1,5 @@
 #include <preview.h>
+#include <localization.h>
 
 #include <unity/scopes/ColumnLayout.h>
 #include <unity/scopes/PreviewWidget.h>
@@ -48,7 +49,7 @@ void Preview::run(sc::PreviewReplyProxy const& reply) {
     {
         sc::VariantBuilder builder;
         builder.add_tuple({ { "id", sc::Variant("open browser") },
-                            { "label", sc::Variant("Open") },
+                            { "label", sc::Variant(_("Open")) },
                             { "uri", sc::Variant(res.uri()) } });
         openers.add_attribute_value("actions", builder.end());
     }

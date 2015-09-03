@@ -41,45 +41,37 @@ void Query::cancelled() {
 
 
 void Query::run(sc::SearchReplyProxy const& reply) {
-    try {
-        // Start by getting information about the query
-        const sc::CannedQuery &query(sc::SearchQueryBase::query());
+    // Start by getting information about the query
+    const sc::CannedQuery &query(sc::SearchQueryBase::query());
 
-        // The empty string here is important; it denotes the department to use when none has been
-        // selected by the user.
-        sc::Department::SPtr all = sc::Department::create("", query, _("All bookmarks"));
-        Client::FolderList folders = Client::get_bookmark_folders();
-        for (const Client::Folder folder : folders) {
-            sc::Department::SPtr dept = sc::Department::create(folder.id, query, folder.name);
-            all->add_subdepartment(dept);
+    // The empty string here is important; it denotes the department to use when none has been
+    // selected by the user.
+    sc::Department::SPtr all = sc::Department::create("", query, _("All bookmarks"));
+    Client::FolderList folders = Client::get_bookmark_folders();
+    for (const Client::Folder folder : folders) {
+        sc::Department::SPtr dept = sc::Department::create(folder.id, query, folder.name);
+        all->add_subdepartment(dept);
+    }
+    reply->register_departments(all);
+
+    int sort = settings().at("sort").get_int();
+    Client::BookmarkList bookmarks =
+            Client::get_bookmarks(query.query_string(), query.department_id(), sort);
+
+    auto cat = reply->register_category("bookmarks", "", "",
+                                        sc::CategoryRenderer(BOOKMARK_TEMPLATE));
+
+    for (const Client::Bookmark bookmark : bookmarks) {
+        sc::CategorisedResult res(cat);
+        res.set_uri(bookmark.url);
+        res.set_title(bookmark.title);
+        res.set_art(bookmark.icon);
+        res.set_intercept_activation();
+
+        if (!reply->push(res)) {
+            // Query has been cancelled.
+            return;
         }
-        reply->register_departments(all);
-
-        int sort = settings().at("sort").get_int();
-        Client::BookmarkList bookmarks =
-                Client::get_bookmarks(query.query_string(), query.department_id(), sort);
-
-        // Register a category for the current weather, with the title we just built
-        auto cat = reply->register_category("bookmarks", "", "",
-                                            sc::CategoryRenderer(BOOKMARK_TEMPLATE));
-
-        for (const Client::Bookmark bookmark : bookmarks) {
-            sc::CategorisedResult res(cat);
-            res.set_uri(bookmark.url);
-            res.set_title(bookmark.title);
-            res.set_art(bookmark.icon);
-            res.set_intercept_activation();
-
-            if (!reply->push(res)) {
-                // Query has been cancelled.
-                return;
-            }
-        }
-
-    } catch (domain_error &e) {
-        // Handle exceptions being thrown by the client API
-        cerr << e.what() << endl;
-        reply->error(current_exception());
     }
 }
 

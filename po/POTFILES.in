@@ -1,0 +1,12 @@
+[type: gettext/ini] src/data/bookmarks.ini.in
+[type: gettext/ini] src/data/bookmarks-settings.ini.in
+src/client.cpp
+src/client.h
+src/localization.h
+src/preview.cpp
+src/preview.h
+src/query.cpp
+src/query.h
+src/scope.cpp
+src/scope.h
+

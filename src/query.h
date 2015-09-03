@@ -23,8 +23,6 @@ public:
     void cancelled() override;
 
     void run(const unity::scopes::SearchReplyProxy &reply) override;
-
-private:
 };
 
 #endif // QUERY_H_

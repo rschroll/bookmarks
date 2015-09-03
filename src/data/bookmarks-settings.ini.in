@@ -1,9 +1,6 @@
-# Below are some example settings. You can access your scope's
-# settings by calling settings() from the Query::run() method.
-# E.g. auto location = settings().at("location").get_string();
-
 [sort]
-type = list
-displayName = Sorting
-displayValues = By Name;Recent Additions
-defaultValue = 0
+type=list
+_displayName=Sorting
+#/ Two sorting methods.  Translate each individually and join with a semicolon.
+_displayValues=By Name;Recent Additions
+defaultValue=0
