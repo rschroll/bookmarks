@@ -1,0 +1,15 @@
+{
+    "architecture": "@CLICK_ARCH@",
+    "description": "A simple Unity scope that accesses the network",
+    "framework": "ubuntu-sdk-15.04",
+    "hooks": {
+        "bookmarks": {
+            "apparmor": "bookmarks.apparmor",
+            "scope": "bookmarks"
+        }
+    },
+    "maintainer": "Robert Schroll <rschroll@gmail.com>",
+    "name": "bookmarks.rschroll",
+    "title": "bookmarks",
+    "version": "0.1"
+}

@@ -1,0 +1,8 @@
+{
+    "template": "ubuntu-scope-network",
+    "policy_groups": [],
+    "policy_version": 1.3,
+    "read_path": [
+        "/home/phablet/.local/share/webbrowser-app/bookmarks.sqlite"
+    ]
+}
