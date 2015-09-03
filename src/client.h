@@ -17,7 +17,16 @@ struct Bookmark {
 
 typedef std::deque<Bookmark> BookmarkList;
 
-BookmarkList get_bookmarks(std::string query, int sort);
+BookmarkList get_bookmarks(std::string query, std::string folder, int sort);
+
+struct Folder {
+    std::string id;
+    std::string name;
+};
+
+typedef std::deque<Folder> FolderList;
+
+FolderList get_bookmark_folders();
 
 }
 
