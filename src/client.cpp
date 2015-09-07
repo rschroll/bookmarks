@@ -1,3 +1,9 @@
+/* Copyright 2015 Robert Schroll
+ *
+ * This file is part of Browser Bookmarks Scope and is distributed under the
+ * terms of the GPL. See the file LICENSE for full details.
+ */
+
 #include <client.h>
 #include <sqlite3.h>
 #include <iostream>
