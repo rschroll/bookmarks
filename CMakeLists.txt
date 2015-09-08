@@ -76,12 +76,12 @@ file(GLOB_RECURSE
 add_custom_target(hidden_files
   ALL
   SOURCES
+    README.md
     manifest.json.in
     bookmarks.apparmor
     src/data/bookmarks.ini.in
     src/data/bookmarks-settings.ini.in
     po/POTFILES.in
-    po/${GETTEXT_PACKAGE}.pot
     ${_PO_FILES}
 )
 

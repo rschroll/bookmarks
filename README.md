@@ -16,9 +16,8 @@ $ make
 If you open the project in Qt Creator, everything should just work.
 
 The header files from `libsqlite3-dev` package are required to build the scope.
-For reasons I don't understand, the I've had the build be unable to find the
-`sqlite3.h` header.  Copying this file to the source directory let it build
-without further problem.
+If your build is failing when tryingto find sqlite3.h, run `click-chroot-agent -r`
+on your machine (directly; *not* inside the chroot).
 
 License
 -------
