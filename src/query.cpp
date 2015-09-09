@@ -54,11 +54,13 @@ void Query::run(sc::SearchReplyProxy const& reply) {
     // selected by the user.
     sc::Department::SPtr all = sc::Department::create("", query, _("All bookmarks"));
     Client::FolderList folders = Client::get_bookmark_folders();
-    for (const Client::Folder folder : folders) {
-        sc::Department::SPtr dept = sc::Department::create(folder.id, query, folder.name);
-        all->add_subdepartment(dept);
+    if (folders.size()) {
+        for (const Client::Folder folder : folders) {
+            sc::Department::SPtr dept = sc::Department::create(folder.id, query, folder.name);
+            all->add_subdepartment(dept);
+        }
+        reply->register_departments(all);
     }
-    reply->register_departments(all);
 
     int sort = settings().at("sort").get_int();
     Client::BookmarkList bookmarks =
